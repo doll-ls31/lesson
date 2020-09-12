@@ -1,17 +1,19 @@
 @charset "utf-8";
-/* 文字色を赤に指定する */
-#red {
-  color: red;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "ヒラギノ角ゴ pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  color: #333;
+  font-size: 13px;
+  line-height: 150px;
 }
-/* 文字色を青に指定する */
-.blue {
-  color: blue;
-}
-/* 文字サイズを25pxに指定する */
-.fs-25 {
-  font-size: 25px;
-}
-/* 文字を太くする */
-.fw-bold {
-  font-weight: bold;
+
+/* ----------wrapper---------- */
+#wrapper {
+  width: 100%;
+  margin: auto;
+  padding: 0px;
+  border: 0px;
+  background-color: #FFF;
 }
