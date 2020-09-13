@@ -43,11 +43,18 @@
       display: flex;
       flex-wrap: wrap-reverse;
     }
+
     /* 下から上へと配置 */
-    #column-reverse {
+    /* #column-reverse { */
+      /* display: flex; */
+      /* flex-direction: column-reverse; */
+      /* background-color: green; */
+    /* } */
+
+    /* 並び順と折り返しを一括で指定 */
+    #flex-flow {
       display: flex;
-      flex-direction: column-reverse;
-      background-color: green;
+      flex-flow: row-reverse wrap;
     }
 
   </style>
@@ -79,6 +86,7 @@
 
   <!-- flex-direction: column;の実装 -->
   <!-- <div id="column"> -->
+
   <div id="no-wrap">
       <h3>Hoge</h3>
       <h3>Fuga</h3>
@@ -86,7 +94,10 @@
       <h3>Bar</h3>
   </div>
   <!--  flex-direction: column-reverse;の実装 -->
-  <div id="column-reverse">
+  <!-- <div id="column-reverse"> -->
+    
+  <!--  flex-flow: row-reverse wrap;の実装 -->
+  <div id="flex-flow">
     <h3>Hoge</h3>
     <h3>Fuga</h3>
     <h3>Foo</h3>
