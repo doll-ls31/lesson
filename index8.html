@@ -15,31 +15,68 @@
        /* position: relative; */
        /* top: 2000px; */
      /* } */
+/* ------------フッターー(CSS)------------ */
+      /* フッタータグでの実装 */
+     /* footer { */
+       /* background-color: blue; */
+       /* position: fixed; */
+       /* bottom: 0px; */
+     /* } */
+     
+     /* .size { */
+       /* height: 1000px; */
+     /* } */
+/* ---------------------------------------- */
 
      /* id="header"での実装パターン */
      /* 背景色を赤に指定、上部を固定する */
      #header {
        background-color: red;
-       position: fixed;
+       /* position: fixed; */
      }
      /* top(上)から2000pxずらす */
+     /* .size { */
+       /* position: relative; */
+       /* top: 2000px; */
+     /* } */
+     
+     /* ------------id="footer"での実装 */
+     #footer {
+background-color: blue;
+     }
      .size {
-       position: relative;
-       top: 2000px;
+       height: 200px;
      }
    </style>
 </head>
 <body>
+
+<!-- ------------ヘッダーを作る------------ -->
+
   <!-- headerタグでの実装 -->
   <!-- <header> -->
     <!-- Header -->
   <!-- </header> -->
+  <!-- <div class="size"> -->
+    <!-- Body -->
+  <!-- </div> -->
   <!-- <h1 class="size">Body</h1> -->
 
   <!-- id="header"での実装 -->
   <div id="header">
     Header
   </div>
-  <h1 class="size">Body</h1>
+  <div class="size">
+    Body
+  </div>
+
+  <!-- ------------フッターを作る------------ -->
+  <!-- <footer> -->
+    <!-- Footer -->
+  <!-- </footer> -->
+  <!-- headerタグでの実装 -->
+   <div id="footer">
+     Footer
+   </div>
 </body>
 </html>
