@@ -6,7 +6,7 @@ body {
   font-family: "ヒラギノ角ゴ pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
   color: #333;
   font-size: 13px;
-  line-height: 150px;
+  line-height: 150%;
 }
 
 /* ----------header---------- */
@@ -30,6 +30,31 @@ body {
   padding: 0px;
   border: 0px;
   background-color: #FFF;
+}
+
+/* ------------nav------------- */
+#nav {
+  width: 100%;
+}
+#nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#nav ul li {
+  float: left;
+  width: 20%;
+  text-align: center;
+}
+#nav ul li a {
+  display: block;
+  height: 20px;
+  margin: 0;
+  padding: 10px;
+  color: #FFF;
+  font-size: 20px;
+  text-decoration: none;
+  background-color: green;
 }
 
 /* ----------footer------------ */
