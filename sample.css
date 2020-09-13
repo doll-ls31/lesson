@@ -58,6 +58,10 @@ body {
   background-color: green;
 }
 
+#nav ul li a:hover {
+        filter: drop-shadow(10px 10px 10px black);
+}
+
 /* ----------container---------- */
 #container {
   width: 100%;
