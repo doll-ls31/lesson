@@ -1,0 +1,45 @@
+<!-- ヘッダーの実装方法 -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>8章</title>
+   <style>
+     /* headerタグでの実装パターン */
+     /* 背景を赤色に指定、上部に固定する */
+     /* header { */
+       /* background-color: red; */
+       /* position: fixed; */
+     /* } */
+     /* .size { */
+       /* position: relative; */
+       /* top: 2000px; */
+     /* } */
+
+     /* id="header"での実装パターン */
+     /* 背景色を赤に指定、上部を固定する */
+     #header {
+       background-color: red;
+       position: fixed;
+     }
+     /* top(上)から2000pxずらす */
+     .size {
+       position: relative;
+       top: 2000px;
+     }
+   </style>
+</head>
+<body>
+  <!-- headerタグでの実装 -->
+  <!-- <header> -->
+    <!-- Header -->
+  <!-- </header> -->
+  <!-- <h1 class="size">Body</h1> -->
+
+  <!-- id="header"での実装 -->
+  <div id="header">
+    Header
+  </div>
+  <h1 class="size">Body</h1>
+</body>
+</html>
