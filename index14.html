@@ -5,22 +5,43 @@
     <title>14章</title>
   <style>
     /* 左から右へと配置 */
-    #sort {
+    /* #sort { */
+      /* display: flex; */
+      /* flex-direction: row; */
+      /* background-color: red; */
+    /* } */
+
+    /* 折り返さない */
+    #no-wrap {
       display: flex;
-      flex-direction: row;
-      background-color: red;
+      flex-wrap: nowrap;
     }
+      
+
     /* 右から左へと配置 */
-    #reverse {
+    /* #reverse { */
+      /* display: flex; */
+      /* flex-direction: row-reverse; */
+      /* background-color: yellow; */
+    /* } */
+
+    /* 上から下へと折り返す */
+    #wrap {
       display: flex;
-      flex-direction: row-reverse;
-      background-color: yellow;
+      flex-wrap: wrap;
     }
+
     /* 上から下へと配置 */
-    #column {
+    /* #column { */
+      /* display: flex; */
+      /* flex-direction: column; */
+      /* background-color: blue; */
+    /* } */
+
+    /* 下から上へと折り返す */
+    #no-wrap {
       display: flex;
-      flex-direction: column;
-      background-color: blue;
+      flex-wrap: wrap-reverse;
     }
     /* 下から上へと配置 */
     #column-reverse {
@@ -33,22 +54,32 @@
 
 </head>
 <body>
+  
   <!-- flex-direction: row;の実装 -->
-  <div id="sort">
+  <!-- <div id="sort"> -->
+  <!-- flex-wrap: nowrap;の実装 -->
+  <div id="no-wrap">  
     <h3>Hoge</h3>
     <h3>Fuga</h3>
     <h3>Foo</h3>
     <h3>Bar</h3>
   </div>
+
   <!--  flex-direction: row-reverse;の実装 -->
-  <div id="reverse">
+  <!-- <div id="reverse"> -->
+  <!-- flex-wrap: wrap;の実装 -->
+
+  <!-- <div id="wrap"> -->
+  <div id="wrap">  
     <h3>Hoge</h3>
     <h3>Fuga</h3>
     <h3>Foo</h3>
     <h3>Bar</h3>
   </div>
+
   <!-- flex-direction: column;の実装 -->
-  <div id="column">
+  <!-- <div id="column"> -->
+  <div id="no-wrap">
       <h3>Hoge</h3>
       <h3>Fuga</h3>
       <h3>Foo</h3>
