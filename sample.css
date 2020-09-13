@@ -57,6 +57,63 @@ body {
   background-color: green;
 }
 
+/* ----------container---------- */
+#container {
+  width: 100%;
+  margin: auto;
+  padding: auto;
+  padding-top: 20px;
+  clear: both;
+}
+
+/* ----------main------------ */
+#main {
+  float: left;
+  width: 60%;
+  padding: 10px 30px 10px 10px;
+}
+#main h2 {
+  margin: 0 0 10px 0;
+  padding: 3px 10px 3px 10px;
+  color: #FFF;
+  font-size: 16px;
+  border-left: solid 10px #C00;
+  background: #F90 url(main_h2.jpg) right top repeat-y;
+}
+#main p {
+  margin: 0;
+  padding: 0;
+}
+#main .post {
+  margin: 0 0 30px 0;
+}
+#main .post imag.right {
+  margin: 0 0 0 8px;
+}
+#main .post imag.left {
+  margin: 0 8px 0 0;
+}
+.right {
+  float: right;
+  width: 40%;
+  height: auto;
+}
+.left {
+  float: left;
+  width: 40%;
+  height: auto;
+}
+
+/* ----------clearfix---------- */
+.clearfix {
+  zoom: 1;
+}
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 /* ----------footer------------ */
 #footer {
   clear: both;
