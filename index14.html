@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+    <title>14章</title>
+  <style>
+    /* 左から右へと配置 */
+    #sort {
+      display: flex;
+      flex-direction: row;
+      background-color: red;
+    }
+    /* 右から左へと配置 */
+    #reverse {
+      display: flex;
+      flex-direction: row-reverse;
+      background-color: yellow;
+    }
+    /* 上から下へと配置 */
+    #column {
+      display: flex;
+      flex-direction: column;
+      background-color: blue;
+    }
+    /* 下から上へと配置 */
+    #column-reverse {
+      display: flex;
+      flex-direction: column-reverse;
+      background-color: green;
+    }
+
+  </style>
+
+</head>
+<body>
+  <!-- flex-direction: row;の実装 -->
+  <div id="sort">
+    <h3>Hoge</h3>
+    <h3>Fuga</h3>
+    <h3>Foo</h3>
+    <h3>Bar</h3>
+  </div>
+  <!--  flex-direction: row-reverse;の実装 -->
+  <div id="reverse">
+    <h3>Hoge</h3>
+    <h3>Fuga</h3>
+    <h3>Foo</h3>
+    <h3>Bar</h3>
+  </div>
+  <!-- flex-direction: column;の実装 -->
+  <div id="column">
+      <h3>Hoge</h3>
+      <h3>Fuga</h3>
+      <h3>Foo</h3>
+      <h3>Bar</h3>
+  </div>
+  <!--  flex-direction: column-reverse;の実装 -->
+  <div id="column-reverse">
+    <h3>Hoge</h3>
+    <h3>Fuga</h3>
+    <h3>Foo</h3>
+    <h3>Bar</h3>
+</div>
+</body>
+</html>
