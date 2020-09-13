@@ -31,3 +31,14 @@ body {
   border: 0px;
   background-color: #FFF;
 }
+
+/* ----------footer------------ */
+#footer {
+  clear: both;
+  width: 100%;
+  padding: 3px 0 3px 0;
+  background: #39F;
+  color: #FFF;
+  font-weight: bold;
+  text-align: center;
+}
