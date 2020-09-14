@@ -53,10 +53,20 @@
 
     // 配列の繰り返し処理
     // 【filter】データを抽出する
-    const userID = ["user34",'',"user18",'',"user55","user38"];
+    // const userID = ["user34",'',"user18",'',"user55","user38"];
 
-    const result = userID.filter( element => {
-      return element !== '';
+    // const result = userID.filter( element => {
+      // return element !== '';
+    // })
+
+    // console.log(result);
+
+
+    // 【map】データを加工して新しい配列を作る
+    const myNumber = ["田中太郎","佐藤一郎","山田次郎"];
+
+    const result = myNumber.map( element => {
+      return element + "さん";
     })
 
     console.log(result);
