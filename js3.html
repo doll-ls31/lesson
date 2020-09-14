@@ -12,22 +12,30 @@
     // console.log(cart[1]); //出力結果 → 19980
 
 
-    // 配列内のデータ数(数値)を取得する
+    // 配列全体のデータを意味する：length
     // const cart = ["Kindle Fire HD 10",19980,1];
 
     // console.log(cart.length); // 出力結果 → 3
 
 
     // 複数の商品をカートに入れた場合
-    const cart = [
-      ["kindle Fire HD 10",19980,1],
-      ["プログラミングの本",1500,1],
-      ["ミネラルウォーター",280,3],
-      ["液晶テレビ24型",35000,1],
-      ["スマホケース",1800,2],
-    ]
+    // const cart = [
+      // ["kindle Fire HD 10",19980,1],
+      // ["プログラミングの本",1500,1],
+      // ["ミネラルウォーター",280,3],
+      // ["液晶テレビ24型",35000,1],
+      // ["スマホケース",1800,2],
+    // ]
 
-    console.log(cart.length); //出力結果 → 5 
+    // console.log(cart.length); //出力結果 → 5
+
+
+    //  乱数(ランダムな数値を生成)：Math.random()
+    const janken = ["グー", "チョキ", "パー"];
+
+    const rnd = Math.floor(Math.random() * janken.length)
+
+    console.log(janken[rnd]);
   </script>
 </body>
 </html>
