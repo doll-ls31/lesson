@@ -73,11 +73,16 @@
 
 
     // 【forEach】配列データを繰り返し処理する
-    const user = ["田中太郎","佐藤一郎","山田次郎","伊藤花子"];
+    // const user = ["田中太郎","佐藤一郎","山田次郎","伊藤花子"];
 
-    user.forEach( element => {
-      console.log(element);
-    })
+    // user.forEach( element => {
+      // console.log(element);
+    // })
+
+    // question：おみくじアプリ
+    const omikuji = ["大吉","中吉","小吉","吉","凶"];
+    const rnd = Math.floor(Math.random() * omikuji.length);
+    console.log(omikuji[rnd]); 
   </script>
 </body>
 </html>
