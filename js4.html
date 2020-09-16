@@ -7,10 +7,18 @@
 <body>
   <script>
     // == (等価演算子):値だけを比較
-    console.log("5" == 5); //true
+    // console.log("5" == 5); //true
 
     // === (厳密等価演算子):値とデータ型を一緒に比較
-    console.log("5" === 5); //false
+    // console.log("5" === 5); //false
+
+    // IF文の使い方
+    const user = ["田中太郎","佐藤一郎","山田次郎","山田三郎","伊藤花子"];
+    user.forEach(name =>{
+      if(name === "山田三郎") {
+        console.log("山田三郎さんは存在します")
+      }
+    })
   </script>
 </body>
 </html>
