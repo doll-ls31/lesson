@@ -17,10 +17,17 @@
       // }
 
       // for文の使い方
-      for (let i = 0; i < 5; i++) {
+      // for (let i = 0; i < 5; i++) {
+      // console.log(i);
+      // 処理を途中でやめる場合、break文を使う
+      // if (i === 3) break;
+      // }
+
+      // continue文の使い方(キャンセルして次の処理を実行する)
+      for (let i = 0; i < 10; i++) {
+        // 2で割った余りが0のときにだけcontinueを実行するという意味 → iが偶数の時だけ処理をキャンセルする
+        if (i % 2 === 0) continue;
         console.log(i);
-        // 処理を途中でやめる場合、break文を使う
-        if (i === 3) break;
       }
     </script>
   </body>
