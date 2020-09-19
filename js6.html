@@ -50,9 +50,22 @@
       // myFunc("プログラミング");
 
       // 検索機能を作ってみる①
+      // const products = ["テレビ","冷蔵庫","机","スマホ","本棚","椅子","テーブル"];
+      // const result = products.filter((item) => item === "スマホ");
+      //  console.log(result);
+
+      // 検索機能を作ってみる②
       const products = ["テレビ","冷蔵庫","机","スマホ","本棚","椅子","テーブル"];
-       const result = products.filter((item) => item === "スマホ");
-       console.log(result);
+      const search = (items,target) => {
+        const result = items.filter(item => item === target);
+        if(result.length) {
+          console.log("商品がみつかりました！");
+        } else {
+          console.log("お探しの商品は見つかりませんでした");
+        }
+      }
+
+      search(products,"スマホ");
     </script>
   </body>
 </html>
