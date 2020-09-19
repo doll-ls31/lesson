@@ -25,24 +25,29 @@
       // }
 
       // 関数宣言(同じ関数名、変数名を使用すると上書きされる)
-      function myFunc() {
-        console.log("これは関数宣言です");
-      }
+      // function myFunc() {
+        // console.log("これは関数宣言です");
+      // }
 
-      function myFunc() {
-        console.log("これは2つ目の関数宣言です");
-      }
-      myFunc();
+      // function myFunc() {
+        // console.log("これは2つ目の関数宣言です");
+      // }
+      // myFunc();
 
       // 関数式(同じ関数名、変数名を使用するとエラーになる)
-      const myFunc1 = () => {
-        console.log("これは関数式です");
-      };
+      // const myFunc1 = () => {
+        // console.log("これは関数式です");
+      // };
 
-      const myFunc1 = () => {
-        console.log("これは2つ目の関数式です");
-      };
-      myFunc1();
+      // const myFunc1 = () => {
+        // console.log("これは2つ目の関数式です");
+      // };
+
+      // 引数
+      const myFunc = (keyword) => {
+        console.log("指定した文字は、「" + keyword+ "」ですね？");
+      }
+      myFunc("プログラミング");
     </script>
   </body>
 </html>
