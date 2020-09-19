@@ -10,19 +10,39 @@
 
       // 関数宣言の場合
       // function myFunc1() {
-        // console.log("これは関数宣言です");
+      // console.log("これは関数宣言です");
       // }
       // myFunc1(); //関数の実行
 
       // const myFunc2 = () => {
-        // console.log("これは関数式です");
+      // console.log("これは関数式です");
       // };
       // myFunc2(); //関数の実行
 
       //☆アロー関数の構文☆
-      const myFunc = () => {
-        //処理を記述する
+      // const myFunc = () => {
+      //処理を記述する
+      // }
+
+      // 関数宣言(同じ関数名、変数名を使用すると上書きされる)
+      function myFunc() {
+        console.log("これは関数宣言です");
       }
+
+      function myFunc() {
+        console.log("これは2つ目の関数宣言です");
+      }
+      myFunc();
+
+      // 関数式(同じ関数名、変数名を使用するとエラーになる)
+      const myFunc1 = () => {
+        console.log("これは関数式です");
+      };
+
+      const myFunc1 = () => {
+        console.log("これは2つ目の関数式です");
+      };
+      myFunc1();
     </script>
   </body>
 </html>
