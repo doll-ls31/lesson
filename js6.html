@@ -55,17 +55,23 @@
       //  console.log(result);
 
       // 検索機能を作ってみる②
-      const products = ["テレビ","冷蔵庫","机","スマホ","本棚","椅子","テーブル"];
-      const search = (items,target) => {
-        const result = items.filter(item => item === target);
-        if(result.length) {
-          console.log("商品がみつかりました！");
-        } else {
-          console.log("お探しの商品は見つかりませんでした");
-        }
-      }
+      // const products = ["テレビ","冷蔵庫","机","スマホ","本棚","椅子","テーブル"];
+      // const search = (items,target) => {
+        // const result = items.filter(item => item === target);
+        // if(result.length) {
+          // console.log("商品がみつかりました！");
+        // } else {
+          // console.log("お探しの商品は見つかりませんでした");
+        // }
+      // }
+      // search(products,"スマホ");
 
-      search(products,"スマホ");
+      // 戻り値
+      const myNumber = 10 ;
+      const getDouble = (number) => {
+        return number * 2;
+      }
+      console.log(getDouble(myNumber));
     </script>
   </body>
 </html>
