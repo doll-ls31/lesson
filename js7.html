@@ -34,17 +34,27 @@
     // console.log(user.area);
 
     // メソッドの作り方
-    const user = {
+    // const user = {
 
-      name: "山田次郎",
-      age: 30,
+      // name: "山田次郎",
+      // age: 30,
 
-      getName: function() {
-        console.log(this.name);
-      }
-    }
+      // getName: function() {
+        // console.log(this.name);
+      // }
+    // }
 
-    user.getName();
+    // user.getName();
+
+    // thisについて
+    const obj = {
+      getThis1: function() {return this},
+
+      getThis2: () => this
+    };
+
+    console.log(obj.getThis1());
+    console.log(obj.getThis2());
 
   </script>
 </body>
