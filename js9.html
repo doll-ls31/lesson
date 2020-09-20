@@ -26,9 +26,17 @@
     <!-- <input type="text" name="myText" /> -->
 
     <!-- ラジオボタン -->
-    <input type="radio" name="area" value="tokyo" />東京都
-    <input type="radio" name="area" value="aichi" />愛知県
-    <input type="radio" name="area" value="osaka" />大阪府
+    <!-- <input type="radio" name="area" value="tokyo" />東京都 -->
+    <!-- <input type="radio" name="area" value="aichi" />愛知県 -->
+    <!-- <input type="radio" name="area" value="osaka" />大阪府 -->
+
+    <!-- チェックボックス -->
+    <label>利用したことのあるOSを選択してください</label><br>
+    <input type="checkbox" name="os" value="windows" />widows
+    <input type="checkbox" name="os" value="mac OS" />Mac OS
+    <input type="checkbox" name="os" value="linux" />Linux
+    <input type="checkbox" name="os" value="iOS" />iOS
+    <input type="checkbox" name="os" value="android" />Android
   </form>
   <!-- <button id="btn">送信 </button> -->
 
@@ -99,13 +107,26 @@
     // });
 
     // ラジオボタンの値を取得する
+    // const btn = document.getElementById("btn");
+
+    // btn.addEventListener("click", () => {
+      // const form = document.forms.myForm;
+
+      // console.log(form.area.value);
+    // });
+
+    // チェックボックスの値を取得する
     const btn = document.getElementById("btn");
 
     btn.addEventListener("click", () => {
       const form = document.forms.myForm;
 
-      console.log(form.area.value);
-    });
+      form.os.forEach(item => {
+        if(item.checked) console.log(item.value);
+      })
+        
+      });
+    // })
 
 
 
