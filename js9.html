@@ -5,14 +5,17 @@
   <title>js9章</title>
 </head>
 <body>
-  <h1>サンプルタイトル</h1>
-  <h2>小見出し１</h2>
+  <!-- <h1>サンプルタイトル</h1> -->
+  <!-- <h2>小見出し１</h2> -->
   <!-- <h1>JavaScriptの学習</h1> -->
 
   <!-- <ul> -->
     <!-- <li id="text" class="sample">１つ目の項目</li> -->
     <!-- <li class="sample">２つ目の項目</li> -->
   <!-- </ul> -->
+
+  <!-- イベント処理 -->
+  <button id="btn">実行</button>
   <script>
     // DOMの仕組み
     // console.log(document.head);
@@ -39,10 +42,18 @@
     // }
 
     // JavaScriptからHTML要素を生成する
-    const h2 = document.createElement("h2"); //h2要素を生成
+    // const h2 = document.createElement("h2"); //h2要素を生成
 
-    h2.textContent = "小見出し２" //h2要素にテキストを追加
-    document.body.appendChild(h2); //h2要素をdocumentオブジェクトに追加して表示
+    // h2.textContent = "小見出し２" //h2要素にテキストを追加
+    // document.body.appendChild(h2); //h2要素をdocumentオブジェクトに追加して表示
+
+    // イベント処理
+    const btn = document.getElementById("btn");
+
+    btn.addEventListener("click",() => {
+      console.log("クリックされました！");
+    })
+
 
     
     
