@@ -6,10 +6,36 @@
 </head>
 <body>
   <h1>JavaScriptの学習</h1>
+
+  <ul>
+    <li id="text" class="sample">１つ目の項目</li>
+    <li class="sample">２つ目の項目</li>
+  </ul>
   <script>
     // DOMの仕組み
-    console.log(document.head);
-    console.log(document.body);
+    // console.log(document.head);
+    // console.log(document.body);
+
+    // windowオブジェクトについて
+    // console.log(window);
+
+    // HTML要素を取得・更新する
+    // const text = document.getElementById("text");
+    // const li = document.querySelector("li");
+
+    // console.log(text);
+    // console.log(li);
+
+    // const sample = document.getElementsByClassName("sample");
+    // console.log(sample);
+
+    // forを使用してHTML要素を一つずつ取得していく
+    const sample = document.getElementsByClassName("sample");
+
+    for(let i = 0; i<sample.length; i++) {
+      console.log(sample[i]);
+    }
+    
   </script>
 </body>
 </html>
