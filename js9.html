@@ -25,7 +25,10 @@
   <form name="myForm">
     <input type="text" name="myText" />
   </form>
-  <button id="btn">送信 </button>
+  <!-- <button id="btn">送信 </button> -->
+
+  <!-- 文字数カウント機能 -->
+  <button id="btn">カウント</button>
   <script>
     // DOMの仕組み
     // console.log(document.head);
@@ -80,6 +83,14 @@
     // document.forms.myForm.myText; //name属性「myText」のinput要素を取得
 
     // document.forms.myForm.myText.value; 
+
+    // 文字数カウント機能
+    const btn = document.getElementById("btn");
+    btn.addEventListener("click", () => {
+      const value = document.forms.myForm.myText.value //入力された文字列を取得
+
+      console.log(value.length + "文字"); //文字数を出力する
+    });
 
 
 
