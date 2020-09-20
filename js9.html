@@ -15,7 +15,11 @@
   <!-- </ul> -->
 
   <!-- イベント処理 -->
-  <button id="btn">実行</button>
+  <!-- <button id="btn">実行</button> -->
+
+  <!-- リスト要素を追加するサンプルアプリ -->
+  <button id="btn">追加</button>
+  <ul id="list"></ul>
   <script>
     // DOMの仕組み
     // console.log(document.head);
@@ -48,11 +52,25 @@
     // document.body.appendChild(h2); //h2要素をdocumentオブジェクトに追加して表示
 
     // イベント処理
+    // const btn = document.getElementById("btn");
+
+    // btn.addEventListener("click",() => {
+      // console.log("クリックされました！");
+    // })
+
+    // リスト要素を追加するサンプルアプリ
+    const list = document.getElementById("list");
     const btn = document.getElementById("btn");
 
     btn.addEventListener("click",() => {
-      console.log("クリックされました！");
+      const li = document.createElement("li"); //li要素を生成する
+
+      li.textContent = "これはリスト要素です"; //li要素にテキストを追加する
+      list.appendChild(li); //li要素をul要素内に追加して表示する
+
     })
+
+
 
 
     
