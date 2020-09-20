@@ -10,28 +10,41 @@
     // const myObj = {};
 
     // プロパティの作り方
-    const user = {
+    // const user = {
 
-      name: "太郎",
-      age: 30,
-      area: "東京都"
-    };
+      // name: "太郎",
+      // age: 30,
+      // area: "東京都"
+    // };
 
     // プロパティを変更する
     // user.name = "山田太郎";
 
     // hobbyプロパティを新規追加 (追加)
-    user.hobby = "映画鑑賞";
+    // user.hobby = "映画鑑賞";
 
     // areaプロパティを削除 (削除)
-    delete user.area;
+    // delete user.area;
 
-    console.log(user);
+    // console.log(user);
 
     // プロパティの値を取得する
     // console.log(user.name);
     // console.log(user.age);
     // console.log(user.area);
+
+    // メソッドの作り方
+    const user = {
+
+      name: "山田次郎",
+      age: 30,
+
+      getName: function() {
+        console.log(this.name);
+      }
+    }
+
+    user.getName();
 
   </script>
 </body>
