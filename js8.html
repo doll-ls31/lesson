@@ -32,20 +32,62 @@
     //  }
 
     // メソッドを定義する
-        class Animal {
-          constructor(name) {
+        // class Animal {
+          // constructor(name) {
+            // this.name = name;
+          // }
+          // getName() {
+            // return this.name;
+          // }
+        // }
+        // const dog = new Animal("犬");
+        // const cat = new Animal("猫");
+        // const bird = new Animal("鳥");
+        // console.log(dog.getName());
+        // console.log(cat.getName());
+        // console.log(bird.getName());
+
+        // 継承
+        class Character {
+          constructor(name,hp) {
             this.name = name;
+            this.hp = hp;
           }
-          getName() {
-            return this.name;
-          }
+        attack() {
+          // cosole.log(this.name + "の攻撃！");
         }
-        const dog = new Animal("犬");
-        const cat = new Animal("猫");
-        const bird = new Animal("鳥");
-        console.log(dog.getName());
-        console.log(cat.getName());
-        console.log(bird.getName());
+      }
+
+      // 主人公のクラスを作成する
+      class Hero extends Character {
+
+        // キャラクターを操作するメソッド
+        control() {}
+
+        // 必殺技を実行するメソッド
+        superAttack() {}
+
+        // 会話するメソッド
+        speak() {}
+
+      }
+
+      // 敵のクラスを作成する
+      class Enemy extends Character {
+
+        // 倒された時に落とすアイテム
+        dropItem() {}
+
+        // 獲得できるポイント　(経験値)
+        getPoint() {}
+      }
+
+      const hero = new Hero("主人公",100);
+      const enemy = new Enemy("敵",10);
+
+      hero.attack();
+      enemy.attack();
+
 
   </script>
 </body>
