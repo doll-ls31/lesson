@@ -48,45 +48,68 @@
         // console.log(bird.getName());
 
         // 継承
-        class Character {
-          constructor(name,hp) {
-            this.name = name;
-            this.hp = hp;
-          }
-        attack() {
+        // class Character {
+          // constructor(name,hp) {
+            // this.name = name;
+            // this.hp = hp;
+          // }
+        // attack() {
           // cosole.log(this.name + "の攻撃！");
+        // }
+      // }
+
+      // 主人公のクラスを作成する
+      // class Hero extends Character {
+
+        // キャラクターを操作するメソッド
+        // control() {}
+
+        // 必殺技を実行するメソッド
+        // superAttack() {}
+
+        // 会話するメソッド
+        // speak() {}
+
+      // }
+
+      // 敵のクラスを作成する
+      // class Enemy extends Character {
+
+        // 倒された時に落とすアイテム
+        // dropItem() {}
+
+        // 獲得できるポイント　(経験値)
+        // getPoint() {}
+      // }
+
+      // const hero = new Hero("主人公",100);
+      // const enemy = new Enemy("敵",10);
+
+      // hero.attack();
+      // enemy.attack();
+
+      // superの使い方
+      class Character {
+        // constructor(name,up) {
+          // this.name = name;
+          // this.hp = hp;
+
+         }
+      // }
+
+      class Hero extends Character {
+        constructor(name,hp,exp) {
+          // this.exp = exp;
+
+          // 継承元のプロパティにアクセス (名前・HPの値をセット)
+          super(name,hp);
+          this.exp = exp;
         }
       }
 
-      // 主人公のクラスを作成する
-      class Hero extends Character {
-
-        // キャラクターを操作するメソッド
-        control() {}
-
-        // 必殺技を実行するメソッド
-        superAttack() {}
-
-        // 会話するメソッド
-        speak() {}
-
-      }
-
-      // 敵のクラスを作成する
-      class Enemy extends Character {
-
-        // 倒された時に落とすアイテム
-        dropItem() {}
-
-        // 獲得できるポイント　(経験値)
-        getPoint() {}
-      }
-
-      const hero = new Hero("主人公",100);
-      const enemy = new Enemy("敵",10);
-
-      hero.attack();
-      enemy.attack();
+      // 名前・HP・経験値をそれぞれ指定
+      const hero = new Hero("主人公",100,10);
+      console.log(hero); //エラー
 
 
   </script>
