@@ -5,22 +5,38 @@
   <title>js10章</title>
 </head>
 <body>
-  <textarea id="text" cols="50" rows="7"></textarea>
-  <p id="count">0文字</p>
+  <!-- 文字数カウントアプリ -->
+  <!-- <textarea id="text" cols="50" rows="7"></textarea> -->
+  <!-- <p id="count">0文字</p> -->
+
+  <!-- 文字にアニメーションをつける -->
+  <h1 id="text">こんにちは</h1>
   <script>
+    // 文字数カウントアプリ
     // getElementById()の引数にテキストエリアとp要素のID属性値を指定し、HTML要素を取得
-    const text = document.getElementById("text");
-    const count = document.getElementById("count");
+    // const text = document.getElementById("text");
+    // const count = document.getElementById("count");
 
     // 取得したテキストエリアのHTML要素に対して、イベント処理を行う
-    text.addEventListener("keyup", () => {
+    // text.addEventListener("keyup", () => {
       //テキストエリアの文字列を取得する
-      const inputText = text.value;
+      // const inputText = text.value;
 
       // 文字数を取得＆出力する
-      count.textContent = inputText.length + "文字";
+      // count.textContent = inputText.length + "文字";
 
-    })
+    // })
+
+    // 文字にアニメーションをつける
+    const h1 = document.getElementById("text");
+    let count = 0;
+
+    const timer = setInterval(() => {
+      h1.style.fontSize = count + "px";
+      count++;
+
+      if(count >= 100) clearInterval(timer);
+    },10);
 
   </script>
 </body>
