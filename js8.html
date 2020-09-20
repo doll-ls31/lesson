@@ -23,14 +23,29 @@
     // }
 
     // 名前・年齢・種類のプロパティを定義したい場合
-    class Animal {
-      constructor(name,age,type) {
-        this.name = name;
-        this.age = age;
-        this.type = type;
-       }
-     }
-        
+    // class Animal {
+      // constructor(name,age,type) {
+        // this.name = name;
+        // this.age = age;
+        // this.type = type;
+      //  }
+    //  }
+
+    // メソッドを定義する
+        class Animal {
+          constructor(name) {
+            this.name = name;
+          }
+          getName() {
+            return this.name;
+          }
+        }
+        const dog = new Animal("犬");
+        const cat = new Animal("猫");
+        const bird = new Animal("鳥");
+        console.log(dog.getName());
+        console.log(cat.getName());
+        console.log(bird.getName());
 
   </script>
 </body>
