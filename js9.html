@@ -18,8 +18,14 @@
   <!-- <button id="btn">実行</button> -->
 
   <!-- リスト要素を追加するサンプルアプリ -->
-  <button id="btn">追加</button>
-  <ul id="list"></ul>
+  <!-- <button id="btn">追加</button> -->
+  <!-- <ul id="list"></ul> -->
+
+  <!-- フォーム要素を制御する -->
+  <form name="myForm">
+    <input type="text" name="myText" />
+  </form>
+  <button id="btn">送信 </button>
   <script>
     // DOMの仕組み
     // console.log(document.head);
@@ -59,16 +65,21 @@
     // })
 
     // リスト要素を追加するサンプルアプリ
-    const list = document.getElementById("list");
-    const btn = document.getElementById("btn");
+    // const list = document.getElementById("list");
+    // const btn = document.getElementById("btn");
 
-    btn.addEventListener("click",() => {
-      const li = document.createElement("li"); //li要素を生成する
+    // btn.addEventListener("click",() => {
+      // const li = document.createElement("li"); //li要素を生成する
 
-      li.textContent = "これはリスト要素です"; //li要素にテキストを追加する
-      list.appendChild(li); //li要素をul要素内に追加して表示する
+      // li.textContent = "これはリスト要素です"; //li要素にテキストを追加する
+      // list.appendChild(li); //li要素をul要素内に追加して表示する
 
-    })
+    // })
+
+    // フォーム要素を制御する
+    // document.forms.myForm.myText; //name属性「myText」のinput要素を取得
+
+    // document.forms.myForm.myText.value; 
 
 
 
