@@ -67,11 +67,25 @@
       // search(products,"スマホ");
 
       // 戻り値
-      const myNumber = 10 ;
-      const getDouble = (number) => {
-        return number * 2;
-      }
-      console.log(getDouble(myNumber));
+      // const myNumber = 10 ;
+      // const getDouble = (number) => {
+        // return number * 2;
+      // }
+      // console.log(getDouble(myNumber));
+
+
+      // 検索機能に戻り値を使ってみる
+            const products = ["テレビ","冷蔵庫","机","スマホ","本棚","椅子","テーブル"];
+            const search = (items,target) => {
+             const result = items.filter(item => item === target);
+            //  returnを利用して戻り値を指定する
+            if(result.length) {
+              return "商品が見つかりました！"
+            } else {
+              return "お探しの商品は見つかりませんでした";
+         }
+       }
+       console.log(search(products,"スマホ"));
     </script>
   </body>
 </html>
