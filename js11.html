@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>js11章</title>
+</head>
+<body>
+  <script>
+    // 非同期処理
+
+    // console.log("スタート");
+
+    // setTimeout(() => {
+      // console.log("処理が完了");
+    // },2000) //2秒(2000ミリ秒)の待ち時間を設定
+    
+    // console.log("終了");
+
+    // Promise処理の作り方
+    const promise = new Promise(() => {
+      setTimeout(() => {
+        console.log("処理が完了");
+      },2000)
+    })
+  </script>
+</body>
+</html>
