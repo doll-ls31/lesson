@@ -17,11 +17,21 @@
     // console.log("終了");
 
     // Promise処理の作り方
-    const promise = new Promise(() => {
+    // const promise = new Promise(() => {
+      // setTimeout(() => {
+        // console.log("処理が完了");
+      // },2000)
+    // })
+
+    const promise = new Promise(resolve => {
       setTimeout(() => {
-        console.log("処理が完了");
+        resolve("処理が完了");
       },2000)
-    })
+    });
+
+    // then()を使って完了通知を受け取る
+    // 引数resultには渡された文字列が格納されている
+    promise.then(result => console.log(result));
   </script>
 </body>
 </html>
