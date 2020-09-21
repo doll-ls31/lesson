@@ -5,6 +5,11 @@
   <title>js11章</title>
 </head>
 <body>
+  <!-- 記事一覧を画面に表示する -->
+  <h1>JavaScript関連の最新記事 by Qiita</h1>
+
+  <button id="btn">更新</button>
+  <ul id="list"></ul>
   <script>
     // 非同期処理
 
@@ -89,9 +94,37 @@
     //Ajaxプログラムの作り方
      const url =  'https://qiita.com/api/v2/tags/javascript/items';
 
-     fetch(url)
-     .then(data => data.json()) //JSONデータとして取得する
-     .then(data => console.log(data)) 
+    //  fetch(url)
+    //  .then(data => data.json()) //JSONデータとして取得する
+    //  .then(data => console.log(data)) 
+
+    // 記事一覧を画面に表示する
+    const btn = document.getElementById("btn");
+    const list = document.getElementById("list");
+
+    const createList = item => {
+      const li =document.createElement("li");
+      const a = document.createElement("a");
+
+      a.href = item.url;
+      li.textContent = item.title;
+
+      a.appendChild(li);
+      list.appendChild(a);
+
+    }
+
+    btn.addEventListener("click", () => {
+      list.innerHTML = "";
+
+      fetch(url)
+      .then(data => data.json())
+      .then(data => {
+
+        data.forEach(item => createList(item))
+      })
+    })
+
   </script>
 </body>
 </html>
