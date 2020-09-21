@@ -6,12 +6,42 @@
   <style>
     /* 独自のダイアログボックスを作成する */
     /* ダイアログボックスのような見た目に変える */
-    #dialog {
-      width: 250px;
-      padding: 30px 20px;
+    /* #dialog { */
+      /* width: 250px; */
+      /* padding: 30px 20px; */
+      /* text-align: center; */
+      /* border: 1px solid #aaa; */
+      /* box-shadow: 2px 2px 4px #888; */
+    /* } */
+
+    /* スクロールで追尾するボタンを作成 */
+    .screenBlue {
+      height: 100vh;
+      color: #fff;
+      font-size: 5em;
       text-align: center;
-      border: 1px solid #aaa;
-      box-shadow: 2px 2px 4px #888;
+      background-color: #88f;
+    }
+
+    .screenRed {
+      height: 100vh;
+      color: #fff;
+      font-size: 5em;
+      text-align: center;
+      background-color: #f88;
+    }
+
+    /* リンク要素をアイコンボタンのような、見た目にする */
+    .pagetop {
+      display: none;
+      padding: 40px 10px;
+      background-color: #fff;
+      color: #000;
+      text-decoration: none;
+      border-radius: 50%;
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
     }
   </style>
 </head>
@@ -24,12 +54,22 @@
   <!-- <h1 id="text">こんにちは</h1> -->
 
   <!-- 独自のダイアログボックスを作成する -->
-  <form id="dialog" name="dialog">
-    <p>ボタンをクリックしてください</p>
-    <input type="button" name="yes" value="はい" />
-    <input type="button" name="no" value="いいえ" />
-    <input type="button" name="cancel" value="キャンセル" />
-  </form>
+  <!-- <form id="dialog" name="dialog"> -->
+    <!-- <p>ボタンをクリックしてください</p> -->
+    <!-- <input type="button" name="yes" value="はい" /> -->
+    <!-- <input type="button" name="no" value="いいえ" /> -->
+    <!-- <input type="button" name="cancel" value="キャンセル" /> -->
+  <!-- </form> -->
+
+  <!-- スクロールで追尾するボタンを作成 -->
+  <div class="screenBlue">ここがトップページです</div>
+  <div class="screenRed">２ページ目</div>
+  <div class="screenBlue">３ページ目</div>
+  <div class="screenRed">４ページ目</div>
+  <div class="screenBlue">５ページ目</div>
+
+  <!-- トップ画面に戻るボタンを作成 -->
+  <a class="pagetop" id="top" href="#">TOPに戻る</a>
   <script>
     // 文字数カウントアプリ
     // getElementById()の引数にテキストエリアとp要素のID属性値を指定し、HTML要素を取得
@@ -59,18 +99,32 @@
 
     // 独自のダイアログボックスを作成する
     // form要素を取得する
-    const form = document.forms.dialog;
+    // const form = document.forms.dialog;
 
-    form.yes.addEventListener("click" , () => {
-      console.log("「はい」がクリックされました");
-    });
+    // form.yes.addEventListener("click" , () => {
+      // console.log("「はい」がクリックされました");
+    // });
 
-    form.no.addEventListener("click" , () => {
-      console.log("「いいえ」がクリックされました");
-    });
+    // form.no.addEventListener("click" , () => {
+      // console.log("「いいえ」がクリックされました");
+    // });
 
-    form.cancel.addEventListener("click" , () => {
-      console.log("「キャンセル」がクリックされました");
+    // form.cancel.addEventListener("click" , () => {
+      // console.log("「キャンセル」がクリックされました");
+    // });
+
+    // スクロールで追尾するボタンを作成
+    const topLink = document.getElementById("top");
+
+    window.addEventListener("scroll", () => {
+      const scrollValue = document.scrollingElement.scrollTop;
+
+
+      if (scrollValue >= 300) {
+        topLink.style.display = "inline";
+      } else if (scrollValue < 300) {
+        topLink.style.display = "none";
+      }
     });
 
   </script>
