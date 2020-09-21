@@ -23,15 +23,68 @@
       // },2000)
     // })
 
-    const promise = new Promise(resolve => {
-      setTimeout(() => {
-        resolve("処理が完了");
-      },2000)
-    });
+    // const promise = new Promise(resolve => {
+      // setTimeout(() => {
+        // resolve("処理が完了");
+      // },2000)
+    // });
 
     // then()を使って完了通知を受け取る
     // 引数resultには渡された文字列が格納されている
-    promise.then(result => console.log(result));
+    // promise.then(result => console.log(result));
+
+    // 複数のPromiseをつなげる
+
+    // setTimeout()で複数の非同期処理をつなげる
+    // setTimeout(() => {
+      // console.log("1つ目の処理が完了");
+
+      // setTimeout(() => {
+        // console.log("２つ目の処理が完了");
+
+        // setTimeout(() => {
+          // console.log("３つ目の処理が完了");
+        // }, 2000)
+      // }, 2000)
+    // }, 2000)
+
+    // Promiseを使って上と同じものを作ってみる
+
+    // 1つ目のPromise処理
+    // const promise1 = () => {
+      // return new Promise(resolve => {
+        // setTimeout(() => {
+          // resolve("1つ目の処理が完了");
+        // }, 2000)
+      // })
+    // }
+    // .then(data => {
+      // console.log(data);
+      // return promise2; //次に実行する非同期処理を指定
+    // })
+
+    // // 2つ目のPromise処理
+    // const promise2 = () => {
+    //   return new Promise(resolve => {
+    //     setTimeout(() => {
+    //       resolve("2つ目の処理が完了");
+    //     }, 2000)
+    //   })
+    // }
+    // .then(data => {
+    //   console.log(data);
+    //   return promise3(); //次に実行する非同期処理を指定
+    // })
+
+    //     // ３つ目のPromise処理
+    //     const promise3 = () => {
+    //   return new Promise(resolve => {
+    //     setTimeout(() => {
+    //       resolve("３つ目の処理が完了");
+    //     }, 2000)
+    //   })
+    // }
+    // .then(data => console.log(data));
   </script>
 </body>
 </html>
