@@ -34,12 +34,24 @@
     // 【1.5特別なDOM属性】
 
     // ①class & for
+    // React.DOM.h1(
+      // {
+        // className: "pretty",
+        // htmlFor: "me",
+      // },
+      // "Hello world!"
+    // );
+
+    // ②style
     React.DOM.h1(
       {
-        className: "pretty",
-        htmlFor: "me",
+        style: {
+          background: "black",
+          color: "white",
+          fontFamily: "Verdana",
+        }
       },
-      "Hello world!"
+      "Hello world"
     );
 
   </script>
