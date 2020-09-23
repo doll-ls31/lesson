@@ -15,15 +15,42 @@
 
     // 2.1最低限の構成
     // コンポーネントを新規作成する
+    // var Component = React.createClass({
+      // render: function() {
+        // return React.DOM.span(null,"カスタムコンポーネント");
+      // }
+    // });
+
+    // ReactDOM.render(
+      // createElement → コンポーネントの「インスタンス】をつくる方法の１つ
+      // React.createElement(Component),
+      // document.getElementById("app")
+    // );
+
+    // 複数のインスタンスを作成する場合(ファクトリーオブジェクト)
+    // var ComponentFactory = React.createFactory(Component)
+
+    // ReactDOM.render(
+      // ConponentFactory(),
+      // document.getElementById("app")
+    // );
+
+    // ReactDOM.render(
+      // React.createElement("span",null,"Hello"),
+      // document.getElementById("app")
+    // );
+    
+    // 2.2プロパティ
     var Component = React.createClass({
       render: function() {
-        return React.DOM.span(null,"カスタムコンポーネント");
+        return React.DOM.span(null,"私は" + this.props.name + "です");
       }
     });
 
     ReactDOM.render(
-      // createElement → コンポーネントの「インスタンス】をつくる方法の１つ
-      React.createElement(Component),
+      React.createElement(Component,{
+        name: "ボブ",
+      }),
       document.getElementById("app")
     );
 
