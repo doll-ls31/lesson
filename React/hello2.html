@@ -55,22 +55,42 @@
     // );
 
     // 2.3 propTypes
-    var Component = React.createClass({
+    // var Component = React.createClass({
+      // propTypes: {
+        // name: React.PropTypes.string.isRequired,
+      // },
+      // render: function() {
+        // return React.DOM.span(null,"私は" + this.props.name + "です");
+      // }
+    // });
+
+    // ReactDOM.render (
+      // React.createElement(Component,{
+        // name: "ボブ",
+      // }),
+      
+      // document.getElementById("app")
+    // );
+
+    // 2.5 ステートを持ったテキストエリアのコンポーネント
+    var TextAreaCounter = React.createClass({
       propTypes: {
-        name: React.PropTypes.string.isRequired,
+        text: React.propTypes.string,
+      },
+      getDefaultProps: function() {
+        return {
+          text: '',
+        };
       },
       render: function() {
-        return React.DOM.span(null,"私は" + this.props.name + "です");
+        return React.DOM.div(null,
+          React.DOM.textarea({
+            defaultValue: this.props.text,
+          }),
+          React.DOM.h3(null,this.props.text.length)
+        );
       }
     });
-
-    ReactDOM.render (
-      React.createElement(Component,{
-        // name: "ボブ",
-      }),
-      
-      document.getElementById("app")
-    );
 
   </script>
 </body>
