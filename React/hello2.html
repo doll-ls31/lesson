@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello React02</title>
+</head>
+<body>
+  <div id="app">
+    <!-- アプリケーションはここに描画される -->
+  </div>
+  <script src="C:/Users/mseit/Desktop/samurai/lesson/React/build/react.js"></script>
+  <script src="C:/Users/mseit/Desktop/samurai/lesson/React/build/react-dom.js"></script>
+  <script>
+    // 2章【コンポーネントのライフサイクル】
+
+    // 2.1最低限の構成
+    // コンポーネントを新規作成する
+    var Component = React.createClass({
+      render: function() {
+        return React.DOM.span(null,"カスタムコンポーネント");
+      }
+    });
+
+    ReactDOM.render(
+      // createElement → コンポーネントの「インスタンス】をつくる方法の１つ
+      React.createElement(Component),
+      document.getElementById("app")
+    );
+
+  </script>
+</body>
+</html>
