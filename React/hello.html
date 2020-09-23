@@ -14,8 +14,20 @@
 
   <script>
         // アプリケーションのコード
+    
+    // 【1.4 React DOM】
     ReactDOM.render(
-      React.DOM.h1(null,"Hello world"),
+      // React.DOM.h1(null,"Hello world"),
+
+      // 子コンポーネントを定義する (１つ目のパラメーター)
+      React.DOM.h1(
+        // {
+          // id: "my-heading",
+        // },
+        {id: "my-heading"},
+        React.DOM.span(null,"Hello"),
+        " world!"
+      ),
       document.getElementById("app")
     );
 
