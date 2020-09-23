@@ -73,24 +73,35 @@
     // );
 
     // 2.5 ステートを持ったテキストエリアのコンポーネント
-    var TextAreaCounter = React.createClass({
-      propTypes: {
-        text: React.propTypes.string,
-      },
-      getDefaultProps: function() {
-        return {
-          text: '',
-        };
-      },
-      render: function() {
-        return React.DOM.div(null,
-          React.DOM.textarea({
-            defaultValue: this.props.text,
-          }),
-          React.DOM.h3(null,this.props.text.length)
-        );
-      }
-    });
+    // var TextAreaCounter = React.createClass({
+      // propTypes: {
+        // text: React.propTypes.string,
+      // },
+      // getDefaultProps: function() {
+        // return {
+          // text: '',
+        // };
+      // },
+      // render: function() {
+        // return React.DOM.div(null,
+          // React.DOM.textarea({
+            // defaultValue: this.props.text,
+          // }),
+          // React.DOM.h3(null,this.props.text.length)
+        // );
+      // }
+    // });
+
+    // 2.9外部からコンポーネントへのアクセス
+
+    // ①コンポーネントへの参照を取得
+    var myTextAreaCounter = ReactDOM.render(
+      React.creatElement(TextAreaCounter, {
+        defalutValue: "ボブ",
+      }),
+      document.getElementById("app")
+    );
+
 
   </script>
 </body>
