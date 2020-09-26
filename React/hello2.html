@@ -1,167 +1,210 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>Hello React02</title>
-  <!-- <style>
-    body,textarea {
-      font-family: Courier;
-    }
-  </style> -->
-</head>
-<body>
-  <!-- <div id="app"> -->
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React02</title>
+    <style>
+      body,
+      textarea {
+        font-family: Courier;
+      }
+    </style>
+  </head>
 
-    <!-- 2.6.1 DOMのイベント -->
-    <div id="parent">
+  <body>
+    <div id="app">
+      <!-- 2.6.1 DOMのイベント -->
+      <!-- <div id="parent">
       <button id="ok">OK</button>
       <button id="cancel">キャンセル</button>
+    </div> -->
+      <!-- アプリケーションはここに描画される -->
     </div>
-    <!-- アプリケーションはここに描画される -->
-  </div>
-  <script src="C:/Users/mseit/Desktop/samurai/lesson/React/build/react.js"></script>
-  <script src="C:/Users/mseit/Desktop/samurai/lesson/React/build/react-dom.js"></script>
-  <script>
-    // 2章【コンポーネントのライフサイクル】
+    <script src="C:/Users/mseit/Desktop/samurai/lesson/React/build/react.js"></script>
+    <script src="C:/Users/mseit/Desktop/samurai/lesson/React/build/react-dom.js"></script>
 
-    // -------2.1最低限の構成----------------------------
-    // コンポーネントを新規作成する
-    // var Component = React.createClass({
-    //   render: function() {
-    //     return React.DOM.span(null,"カスタムコンポーネント");
-    //    }
-    //  });
+    <!-- <script src="react/build/react.js"></script>
+    <script src="react/build/react-dom.js"></script> -->
 
-    // ReactDOM.render(
+    <script>
+      // 2章【コンポーネントのライフサイクル】
+
+      // -------2.1最低限の構成----------------------------
+      // コンポーネントを新規作成する
+      // var Component = React.createClass({
+      //   render: function() {
+      //     return React.DOM.span(null,"カスタムコンポーネント");
+      //    }
+      //  });
+
+      // ReactDOM.render(
       // createElement → コンポーネントの「インスタンス】をつくる方法の１つ
-    //   React.createElement(Component),
-    //   document.getElementById("app")
-    // );
+      //   React.createElement(Component),
+      //   document.getElementById("app")
+      // );
 
-    // --------------------------------------------------
+      // --------------------------------------------------
 
-    // 複数のインスタンスを作成する場合(ファクトリーオブジェクト)
-    // var Component = React.createClass({
-    //   render: function() {
-    //     return React.DOM.span(null, "I'm so custom")
-    //   }
-    // });
+      // 複数のインスタンスを作成する場合(ファクトリーオブジェクト)
+      // var Component = React.createClass({
+      //   render: function() {
+      //     return React.DOM.span(null, "I'm so custom")
+      //   }
+      // });
 
+      // var ComponentFactory = React.createFactory(Component)
 
-    // var ComponentFactory = React.createFactory(Component)
+      // ReactDOM.render(
+      //   ComponentFactory(),
+      //   document.getElementById("app")
+      // );
 
-    // ReactDOM.render(
-    //   ComponentFactory(),
-    //   document.getElementById("app")
-    // );
+      // React.createElement()を使用してDOMの要素を生成する
+      // ReactDOM.render(
+      //   React.createElement("span",null,"Hello"),
+      //   document.getElementById("app")
+      // );
 
+      // ---------------------------------------------------
 
-    // React.createElement()を使用してDOMの要素を生成する
-    // ReactDOM.render(
-    //   React.createElement("span",null,"Hello"),
-    //   document.getElementById("app")
-    // );
+      // 2.2プロパティ
+      // var Component = React.createClass({
+      //   render: function() {
+      //     return React.DOM.span(null,"私は" + this.props.name + "です");
+      //   }
+      // });
 
-    // ---------------------------------------------------
-    
-    // 2.2プロパティ
-    // var Component = React.createClass({
-    //   render: function() {
-    //     return React.DOM.span(null,"私は" + this.props.name + "です");
-    //   }
-    // });
+      // ReactDOM.render(
+      //   React.createElement(Component,{
+      //     name: "ボブ",
+      //   }),
+      //   document.getElementById("app")
+      // );
 
-    // ReactDOM.render(
-    //   React.createElement(Component,{
-    //     name: "ボブ",
-    //   }),
-    //   document.getElementById("app")
-    // );
+      // ---------------------------------------------------
 
-    // ---------------------------------------------------
+      // 2.3 propTypes
+      // var Component = React.createClass({
+      //   propTypes: {
+      //     name: React.PropTypes.string.isRequired,
+      //   },
+      //   render: function() {
+      //     return React.DOM.span(null,"私は" + this.props.name + "です");
+      //   }
+      // });
 
-    // 2.3 propTypes
-    // var Component = React.createClass({
-    //   propTypes: {
-    //     name: React.PropTypes.string.isRequired,
-    //   },
-    //   render: function() {
-    //     return React.DOM.span(null,"私は" + this.props.name + "です");
-    //   }
-    // });
+      // ReactDOM.render (
+      //   React.createElement(Component,{
+      //     name: "ボブ",
+      //   }),
 
-    // ReactDOM.render (
-    //   React.createElement(Component,{
-    //     name: "ボブ",
-    //   }),
-      
-    //   document.getElementById("app")
-    // );
+      //   document.getElementById("app")
+      // );
 
-    // ---------------------------------------------------
+      // ---------------------------------------------------
 
-    // 2.5 ステートを持ったテキストエリアのコンポーネント
-    // var TextAreaCounter = React.createClass({
+      // 2.5 ステートを持ったテキストエリアのコンポーネント
+      // var TextAreaCounter = React.createClass({
 
-    //   propTypes: {
-    //     text: React.propTypes.string,
-    //   },
-    //   getDefaultProps: function() {
-    //     return {
-    //       text: '',
-    //     };
-    //   },
-    //   render: function() {
-    //     return React.DOM.div(null,
-    //       React.DOM.textarea({
-    //         defaultValue: this.props.text,
-    //       }),
-    //       React.DOM.h3(null, this.props.text.length)
-    //     );
-    //   }
-    // });
+      //   propTypes: {
+      //     text: React.propTypes.string,
+      //   },
+      //   getDefaultProps: function() {
+      //     return {
+      //       text: '',
+      //     };
+      //   },
+      //   render: function() {
+      //     return React.DOM.div(null,
+      //       React.DOM.textarea({
+      //         defaultValue: this.props.text,
+      //       }),
+      //       React.DOM.h3(null, this.props.text.length)
+      //     );
+      //   }
+      // });
 
-    // ReactDOM.render(
-    //   React.createElement(TextAreaCounter, {
-    //     text: "ボブ",
-    //   }),
-    //   document.getElementById("app")
-    // );
+      // ReactDOM.render(
+      //   React.createElement(TextAreaCounter, {
+      //     text: "ボブ",
+      //   }),
+      //   document.getElementById("app")
+      // );
 
-    // ---------------------------------------------------
+      // ---------------------------------------------------
 
-    // 2.6 DOMのイベント
-    document.getElementById("parent").addEventListener("click",function(event) {
-      var button = event.target;
+      // 2.6 DOMのイベント
+      // document.getElementById("parent").addEventListener("click",function(event) {
+      //   var button = event.target;
 
       // 押されたボタンに応じて、異なる処理を行います
-      switch(button.id) {
-        case "ok":
-        console.log("OK!");
-        break;
-        case "cancel":
-        console.log("キャンセル");
-        break
-        default:
-        new Error("不正なIDです");
-      };
-    });
+      //   switch(button.id) {
+      //     case "ok":
+      //     console.log("OK!");
+      //     break;
+      //     case "cancel":
+      //     console.log("キャンセル");
+      //     break
+      //     default:
+      //     new Error("不正なIDです");
+      //   };
+      // });
 
-    // ---------------------------------------------------
+      // ---------------------------------------------------
 
-    
+      // 2.9外部からコンポーネントへのアクセス
 
-    // 2.9外部からコンポーネントへのアクセス
+      // ①コンポーネントへの参照を取得
+      var TextAreaCounter = React.createClass({
+        propTypes: {
+          defaultValue: React.PropTypes.string,
+        },
 
-    // ①コンポーネントへの参照を取得
-    // var myTextAreaCounter = ReactDOM.render(
-      // React.creatElement(TextAreaCounter, {
-        // defalutValue: "ボブ",
-      // }),
-      // document.getElementById("app")
-    // );
+        getInitialState: function () {
+          return {
+            text: this.props.defaultValue,
+          };
+        },
 
+        _textChange: function (ev) {
+          this.setState({
+            text: ev.target.value,
+          });
+        },
 
-  </script>
-</body>
+        render: function () {
+          return React.DOM.div(
+            null,
+            React.DOM.textarea({
+              value: this.state.text,
+              onChange: this._textChange,
+            }),
+            React.DOM.h3(null, this.state.text.length)
+          );
+        },
+      });
+
+      // var myTextAreaCounter = ReactDOM.render(
+      //   React.createElement(TextAreaCounter, {
+      //     defalutValue: "Bob",
+      //   }),
+      //   document.getElementById("app")
+      // );
+
+      // var myTextAreaCounter = ReactDOM.render(
+      //   React.createElement(TextAreaCounter, {
+      //     defalutValue: "ボブ",
+      //   }),
+      //   document.getElementById("app")
+      // );
+
+      var myTextAreaCounter = ReactDOM.render(
+        React.createElement(TextAreaCounter, {
+          defaultValue: "Bob",
+          // defalutValue: "ボブ",
+        }),
+        document.getElementById("app")
+      );
+    </script>
+  </body>
 </html>
