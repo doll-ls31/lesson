@@ -155,34 +155,34 @@
       // 2.9外部からコンポーネントへのアクセス
 
       // ①コンポーネントへの参照を取得
-      var TextAreaCounter = React.createClass({
-        propTypes: {
-          defaultValue: React.PropTypes.string,
-        },
+      // var TextAreaCounter = React.createClass({
+      //   propTypes: {
+      //     defaultValue: React.PropTypes.string,
+      //   },
 
-        getInitialState: function () {
-          return {
-            text: this.props.defaultValue,
-          };
-        },
+      //   getInitialState: function () {
+      //     return {
+      //       text: this.props.defaultValue,
+      //     };
+      //   },
 
-        _textChange: function (ev) {
-          this.setState({
-            text: ev.target.value,
-          });
-        },
+      //   _textChange: function (ev) {
+      //     this.setState({
+      //       text: ev.target.value,
+      //     });
+      //   },
 
-        render: function () {
-          return React.DOM.div(
-            null,
-            React.DOM.textarea({
-              value: this.state.text,
-              onChange: this._textChange,
-            }),
-            React.DOM.h3(null, this.state.text.length)
-          );
-        },
-      });
+      //   render: function () {
+      //     return React.DOM.div(
+      //       null,
+      //       React.DOM.textarea({
+      //         value: this.state.text,
+      //         onChange: this._textChange,
+      //       }),
+      //       React.DOM.h3(null, this.state.text.length)
+      //     );
+      //   },
+      // });
 
       // var myTextAreaCounter = ReactDOM.render(
       //   React.createElement(TextAreaCounter, {
@@ -198,13 +198,125 @@
       //   document.getElementById("app")
       // );
 
+      // var myTextAreaCounter = ReactDOM.render(
+      //   React.createElement(TextAreaCounter, {
+      //     defaultValue: "Bob",
+      // defalutValue: "ボブ",
+      //   }),
+      //   document.getElementById("app")
+      // );
+
+      //----------------------------------------------------------
+
+      //2.12ライフサイクルの例：すべてをログに記録する
+      // var TextAreaCounter = React.createClass({
+      //   _log: function(methodName,args) {
+      //     console.log(methodName,args);
+      //   },
+      //   componentWillUpdate: function() {
+      //     this._log("componentWillUpdate", arguments);
+      //   },
+      //   componentDidUpdate: function() {
+      //     this._log("componentDidUpdate", arguments);
+      //   },
+      //   componentWillMount: function() {
+      //     this._log("componentWillMount", arguments);
+      //   },
+      //   componentDidMount: function() {
+      //     this._log("componentDidMount", arguments);
+      //   },
+      //   componentWillUnmount: function() {
+      //     this._log("componentWillUnmount", arguments);
+      //   },
+
+      //   propTypes: {
+      //     dafalutValue: React.PropTypes.string,
+      //   },
+
+      //   getInitialState: function() {
+      //     return {
+      //       text: this.props.defaultValue,
+      //     };
+      //   },
+
+      //   _textChange: function(ev) {
+      //     this.setState({
+      //       text: ev.target.value,
+      //     });
+      //   },
+
+      //   render: function() {
+      //     return React.DOM.div(null,
+      //     React.DOM.textarea({
+      //       value: this.state.text,
+      //       onChange: this._textChange,
+      //     }),
+      //     React.DOM.h3(null, this.state.text.length)
+      //     );
+      //   }
+      // });
+
+      // var myTextAreaCounter = ReactDOM.render(
+      //   React.createElement(TextAreaCounter,{
+      //     defaultValue:"Bob"
+      //   }),
+      //   document.getElementById("app")
+      // );
+
+      // --------------------------------------------------------
+      
+      // 2.13 ライフサイクルの例：ミックスイン = (継承)
+      var logMixin = {
+        _log: function(methodName, args) {
+          console.log(this.name + '::' + methodName, args);
+        },
+        componentWillUpdate:  function() {this._log('componentWillUpdate',  arguments);},
+        componentDidUpdate:   function() {this._log('componentDidUpdate',   arguments);},
+        componentWillMount:   function() {this._log('componentWillMount',   arguments);},
+        componentDidMount:    function() {this._log('componentDidMount',    arguments);},
+        componentWillUnmount: function() {this._log('componentWillUnmount', arguments);},
+      };
+
+      var TextAreaCounter = React.createClass({
+        name: 'TextAreaCounter',
+        mixins: [logMixin],
+
+        propTypes: {
+          defaultValue: React.PropTypes.string,
+        },
+
+        getInitialState: function() {
+          return {
+            text: this.props.defaultValue,
+          };
+        },
+
+        _textChange: function(ev) {
+          this.setState({
+            text: ev.target.value,
+          });
+        },
+
+        render: function() {
+          return React.DOM.div(null,
+            React.DOM.textarea({
+              value: this.state.text,
+              onChange: this._textChange,
+            }),
+            React.DOM.h3(null, this.state.text.length)
+          );
+        }
+      });
+
       var myTextAreaCounter = ReactDOM.render(
         React.createElement(TextAreaCounter, {
           defaultValue: "Bob",
-          // defalutValue: "ボブ",
         }),
         document.getElementById("app")
       );
+
+      // ---------------------------------------------------------
+      
     </script>
   </body>
 </html>
