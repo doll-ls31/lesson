@@ -26,13 +26,20 @@
         getInitialState: function () {
           return { data: this.props.initialData };
         },
-
+        
+        // 3.5並べ替え
         _sort: function (e) {
           var column = e.target.cellIndex;
+
+          // データをコピーする
           var data = this.state.data.slice();
+
+          // 並べ替えは、sort()メソッドに渡したコールバック関数の中で実行
           data.sort(function (a, b) {
             return a[column] > b[column] ? 1 : -1;
           });
+
+          // 並べ替えられたdataを指定してステートを更新する
           this.setState({
             data: data,
           });
