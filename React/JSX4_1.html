@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>JSX</title>
+</head>
+<body>
+  <div id="app">
+    <!-- アプリケーションはここに描画されます -->
+  <script src="C:/Users/mseit/Desktop/samurai/lesson/React/build/react.js"></script>
+  <script src="C:/Users/mseit/Desktop/samurai/lesson/React/build/react-dom.js"></script>
+
+  <script>
+    // 4.1ハロー、JSX
+    // ★一章でとりあげた、Helloworidの出力方法
+    // ReactDOM.render(
+    //   React.DOM.h1(
+    //     {id: "my-heading"},
+    //     React.DOM.span(null,
+    //      React.DOM.em(null,"Hell"),
+    //      "o"
+    //     ),
+    //     "world!"
+    //   ),
+    //   document.getElementById("app")
+    // );
+
+    // ★JSXを用いて１章のコードをシンプルにする
+    // JavaScriptの構文規則に反しているので実行ができないパターン
+    ReactDOM.render(
+      // <h1 id="my-heading">
+      <h1 id="my-heading">
+       <span><em>Hell</em>o</span> world!
+      </h1>,
+      document.getElementById('app')
+    );
+  </script>
+</body>
+</html>
