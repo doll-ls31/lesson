@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>JSX</title>
+</head>
+<body>
+  <div id="app">
+        <!-- アプリケーションはここに描画されます -->
+  </div>
+  <script src="C:/Users/mseit/Desktop/samurai/lesson/React/build/react.js"></script>
+  <script src="C:/Users/mseit/Desktop/samurai/lesson/React/build/react-dom.js"></script>
+  <script src="C:/Users/mseit/Desktop/samurai/lesson/babel/browser.js"></script>
+  <script type="text/babel">
+
+  // 構文エラーになる
+  //  var Example = React.createClass({
+  //    render: function() {
+  //      return(
+  //        <span>
+  //         Hello
+  //        </span>
+  //        <span>
+  //         HWorld
+  //        </span>
+
+  //      );
+  //    }
+  //  });
+
+      // 構文エラーにならないコード
+      // 別のコンポーネントでラップする
+      var Example = React.createClass({
+        render: function() {
+          return (
+            <div>
+             <span>
+              Hello
+             </span>
+             <span>
+              World
+             </span>
+            </div>
+          );
+        }
+      });
+
+
+  </script>
+</body>
+</html>
