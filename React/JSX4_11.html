@@ -30,20 +30,44 @@
 
       // 構文エラーにならないコード
       // 別のコンポーネントでラップする
+      // var Example = React.createClass({
+      //   render: function() {
+      //     return (
+      //       <div>
+      //        <span>
+      //         Hello
+      //        </span>
+      //        <span>
+      //         World
+      //        </span>
+      //       </div>
+      //     );
+      //   }
+      // });
+
+      // 配列をもとにノードを組み立てる
       var Example = React.createClass({
         render: function() {
+
+          var greeting = [
+            <span key="greet">Hello</span>,
+            ' ',
+            <span key="world">World</span>,
+            '!',
+          ];
+
           return (
             <div>
-             <span>
-              Hello
-             </span>
-             <span>
-              World
-             </span>
+             {greeting}
             </div>
           );
         }
       });
+
+      ReactDOM.render(
+        <Example/>,
+        document.getElementById("app")
+      );
 
 
   </script>
