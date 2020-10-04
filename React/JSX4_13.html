@@ -55,7 +55,7 @@
     var MySelect1 = Recat.createClass({
       render: function () {
         return (
-          <select defaultValue='move'>
+          <select defaultValue="move">
           <option value="stay">Should I stay</option>
          <option value="move">or should I go</option>
          <option value="trouble">If I stay it will be trouble</option>
@@ -67,14 +67,14 @@
 
     var MySelect2 = React.createClass({
       getInitialState: function() {
-        return {value: 'move'};
+        return {value: "move"};
       },
       _onChange: function(event) {
         this.setState({value: event.target.value});
       },
-      render: function(event) {
+      render: function() {
         return(
-          <select value={this.state.value} _onChange={this._onChange}>
+          <select value={this.state.value} onChange={this._onChange}>
          <option value="stay">Should I stay</option>
          <option value="move">or should I go</option>
          <option value="trouble">If I stay it will be trouble</option>
