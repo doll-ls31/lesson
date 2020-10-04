@@ -5,9 +5,14 @@
   <title>JSX</title>
 </head>
 <body>
-  <div id="app">
+  <!-- <div id="app"> -->
         <!-- アプリケーションはここに描画されます -->
-  </div>
+  <!-- </div> -->
+
+  <div id="app1"></div>
+  <div id="app2"></div>
+  <div id="app3"></div>
+  <div id="app4"></div>
   <script src="C:/Users/mseit/Desktop/samurai/lesson/React/build/react.js"></script>
   <script src="C:/Users/mseit/Desktop/samurai/lesson/React/build/react-dom.js"></script>
   <script src="C:/Users/mseit/Desktop/samurai/lesson/babel/browser.js"></script>
@@ -17,10 +22,31 @@
       console.log("defaultValue: ",event.target.defaultValue);
     }
 
+    // ReactDOM.render(
+    //   <input defaultValue="hello" onChange={log} />,
+    //   document.getElementById("app")
+    // );
+
     ReactDOM.render(
-      <input defaultValue="hello" onChange={log} />,
-      document.getElementById("app")
+      <textarea defaultValue="hello\nworld" onChange={log} />,
+      document.getElementById("app1")
     );
+    ReactDOM.render(
+      <textarea defaultValue={"hello\nworld"} onChange={log} />,
+      document.getElementById("app2")
+    );
+    ReactDOM.render(
+      <textarea onChange={log}>hello
+      world
+       </textarea>,
+       document.getElementById("app3")
+    );
+    ReactDOM.render(
+      <textarea onChange={log}>{"hello\n\world"}
+      </textarea>,
+      document.getElementById("app4")
+    );
+
 </script>
 </body>
 </html>
