@@ -1,8 +1,8 @@
 // ReactDOM.render(
-  // <h1>
-    // <Logo /> アプリケーションにようこそ！
-  // </h1>,
-  // document.getElementById("app")
+// <h1>
+// <Logo /> アプリケーションにようこそ！
+// </h1>,
+// document.getElementById("app")
 // );
 
 "use strict"; //必ず指定するようにする

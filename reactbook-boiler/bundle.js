@@ -217,6 +217,10 @@ _reactDom2.default.render(_react2.default.createElement(
 },{"./components/Logo":3,"react":12,"react-dom":9}],3:[function(require,module,exports){
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require("react");
@@ -257,6 +261,8 @@ var Logo = function (_React$Component) {
 
   return Logo;
 }(_react2.default.Component);
+
+exports.default = Logo;
 },{"react":12}],4:[function(require,module,exports){
 /*
 object-assign
