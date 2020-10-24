@@ -24,6 +24,7 @@ import Excel from './components/Excel';
 import Logo from './components/Logo';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
 var headers = localStorage.getItem('headers');
 var data = localStorage.getItem('data');
@@ -36,7 +37,7 @@ if (!headers) {
 ReactDOM.render(
   <div>
     <h1>
-      <Logo /> Whinepadにようこそ!
+      <Logo/> Welcome to Whinepad!
     </h1>
     <Excel headers={headers} initialData={data}/>
   </div>,

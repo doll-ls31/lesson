@@ -6,6 +6,7 @@ var Excel = React.createClass({
   propTypes: {
     headers: React.PropTypes.arrayOf(
       React.PropTypes.string
+      
     ),
     initialData: React.PropTypes.arrayOf(
       React.PropTypes.arrayOf(

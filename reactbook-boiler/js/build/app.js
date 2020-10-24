@@ -37,6 +37,10 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var headers = localStorage.getItem('headers');
@@ -54,7 +58,7 @@ _reactDom2.default.render(_react2.default.createElement(
     'h1',
     null,
     _react2.default.createElement(_Logo2.default, null),
-    ' Whinepad\u306B\u3088\u3046\u3053\u305D!'
+    ' Welcome to Whinepad!'
   ),
   _react2.default.createElement(_Excel2.default, { headers: headers, initialData: data })
 ), document.getElementById('pad'));
