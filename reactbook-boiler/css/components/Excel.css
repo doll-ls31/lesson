@@ -38,14 +38,4 @@
 .Excel .toolbar a:hover, .Excel .toolbar button:hover {
   background: #3cb0fd;
   background-image: linear-gradient(to button, #3cb0fd, #3498db);
-}.Logo {
-  background: purple url('images/whinepad-logo.svg');
-  background-size: cover;
-  display: inline-block;
-  height: 60px;
-  vertical-align: middle;
-  width: 100px;
-}html {
-  background-color: white;
-  font: 16px Arial;
 }

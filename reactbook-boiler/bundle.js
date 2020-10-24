@@ -192,29 +192,270 @@ process.umask = function() { return 0; };
 // document.getElementById("app")
 // );
 
-"use strict"; //必ず指定するようにする
+'use strict'; //必ず指定するようにする
 
-var _react = require("react");
+// ５章 開発環境セットアップ
+// import React from "react";
+// import ReactDOM from "react-dom";
+// import Logo from "./components/Logo";
 
-var _react2 = _interopRequireDefault(_react);
+// ReactDOM.render(
+//   <h1>
+//     <Logo /> アプリケーションにようこそ！
+//   </h1>,
+//   document.getElementById("app")
+// );
 
-var _reactDom = require("react-dom");
+// ６章 Whinepad v0.0.1
 
-var _reactDom2 = _interopRequireDefault(_reactDom);
+var _Excel = require('./components/Excel');
 
-var _Logo = require("./components/Logo");
+var _Excel2 = _interopRequireDefault(_Excel);
+
+var _Logo = require('./components/Logo');
 
 var _Logo2 = _interopRequireDefault(_Logo);
 
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var headers = localStorage.getItem('headers');
+var data = localStorage.getItem('data');
+
+if (!headers) {
+  headers = ['Title', 'Year', 'Rating', 'Comments'];
+  data = [['Test', '2015', '3', 'meh']];
+}
+
 _reactDom2.default.render(_react2.default.createElement(
-  "h1",
+  'div',
   null,
-  _react2.default.createElement(_Logo2.default, null),
-  " \u30A2\u30D7\u30EA\u30B1\u30FC\u30B7\u30E7\u30F3\u306B\u3088\u3046\u3053\u305D\uFF01"
-), document.getElementById("app"));
-},{"./components/Logo":3,"react":16,"react-dom":7}],3:[function(require,module,exports){
+  _react2.default.createElement(
+    'h1',
+    null,
+    _react2.default.createElement(_Logo2.default, null),
+    ' Whinepad\u306B\u3088\u3046\u3053\u305D!'
+  ),
+  _react2.default.createElement(_Excel2.default, { headers: headers, initialData: data })
+), document.getElementById('pad'));
+},{"./components/Excel":3,"./components/Logo":4,"react":17,"react-dom":8}],3:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Excel = _react2.default.createClass({
+  displayName: 'Excel',
+
+  propTypes: {
+    headers: _react2.default.PropTypes.arrayOf(_react2.default.PropTypes.string),
+    initialData: _react2.default.PropTypes.arrayOf(_react2.default.PropTypes.arrayOf(_react2.default.PropTypes.string))
+  },
+
+  getInitialState: function getInitialState() {
+    return {
+      data: this.props.initialData,
+      sortby: null,
+      descending: false,
+      edit: null, // [row index, cell index],
+      search: false
+    };
+  },
+
+  _sort: function _sort(e) {
+    var column = e.target.cellIndex;
+    var data = this.state.data.slice();
+    var descending = this.state.sortby === column && !this.state.descending;
+    data.sort(function (a, b) {
+      return descending ? a[column] < b[column] : a[column] > b[column];
+    });
+    this.setState({
+      data: data,
+      sortby: column,
+      descending: descending
+    });
+  },
+
+  _showEditor: function _showEditor(e) {
+    this.setState({ edit: {
+        row: parseInt(e.target.dataset.row, 10),
+        cell: e.target.cellIndex
+      } });
+  },
+
+  _save: function _save(e) {
+    e.preventDefault();
+    var input = e.target.firstChild;
+    var data = this.state.data.slice();
+    data[this.state.edit.row][this.state.edit.cell] = input.value;
+    this.setState({
+      edit: null,
+      data: data
+    });
+  },
+
+  _preSearchData: null,
+
+  _toggleSearch: function _toggleSearch() {
+    if (this.state.search) {
+      this.setState({
+        data: this._preSearchData,
+        search: false
+      });
+      this._preSearchData = null;
+    } else {
+      this._preSearchData = this.state.data;
+      this.setState({
+        search: true
+      });
+    }
+  },
+
+  _search: function _search(e) {
+    var needle = e.target.value.toLowerCase();
+    if (!needle) {
+      this.setState({ data: this._preSearchData });
+      return;
+    }
+    var idx = e.target.dataset.idx;
+    var searchdata = this._preSearchData.filter(function (row) {
+      return row[idx].toString().toLowerCase().indexOf(needle) > -1;
+    });
+    this.setState({ data: searchdata });
+  },
+
+  _download: function _download(format, ev) {
+    var contents = format === 'json' ? JSON.stringify(this.state.data) : this.state.data.reduce(function (result, row) {
+      return result + row.reduce(function (rowresult, cell, idx) {
+        return rowresult + '"' + cell.replace(/"/g, '""') + '"' + (idx < row.length - 1 ? ',' : '');
+      }, '') + "\n";
+    }, '');
+
+    var URL = window.URL || window.webkitURL;
+    var blob = new Blob([contents], { type: 'text/' + format });
+    ev.target.href = URL.createObjectURL(blob);
+    ev.target.download = 'data.' + format;
+  },
+
+  render: function render() {
+    return _react2.default.createElement(
+      'div',
+      { className: 'Excel' },
+      this._renderToolbar(),
+      this._renderTable()
+    );
+  },
+
+  _renderToolbar: function _renderToolbar() {
+    return _react2.default.createElement(
+      'div',
+      { className: 'toolbar' },
+      _react2.default.createElement(
+        'button',
+        { onClick: this._toggleSearch },
+        'Search'
+      ),
+      _react2.default.createElement(
+        'a',
+        { onClick: this._download.bind(this, 'json'),
+          href: 'data.json' },
+        'Export JSON'
+      ),
+      _react2.default.createElement(
+        'a',
+        { onClick: this._download.bind(this, 'csv'),
+          href: 'data.csv' },
+        'Export CSV'
+      )
+    );
+  },
+
+  _renderSearch: function _renderSearch() {
+    if (!this.state.search) {
+      return null;
+    }
+    return _react2.default.createElement(
+      'tr',
+      { onChange: this._search },
+      this.props.headers.map(function (_ignore, idx) {
+        return _react2.default.createElement(
+          'td',
+          { key: idx },
+          _react2.default.createElement('input', { type: 'text', 'data-idx': idx })
+        );
+      })
+    );
+  },
+
+  _renderTable: function _renderTable() {
+    return _react2.default.createElement(
+      'table',
+      null,
+      _react2.default.createElement(
+        'thead',
+        { onClick: this._sort },
+        _react2.default.createElement(
+          'tr',
+          null,
+          this.props.headers.map(function (title, idx) {
+            if (this.state.sortby === idx) {
+              title += this.state.descending ? ' \u2191' : ' \u2193';
+            }
+            return _react2.default.createElement(
+              'th',
+              { key: idx },
+              title
+            );
+          }, this)
+        )
+      ),
+      _react2.default.createElement(
+        'tbody',
+        { onDoubleClick: this._showEditor },
+        this._renderSearch(),
+        this.state.data.map(function (row, rowidx) {
+          return _react2.default.createElement(
+            'tr',
+            { key: rowidx },
+            row.map(function (cell, idx) {
+              var content = cell;
+              var edit = this.state.edit;
+              if (edit && edit.row === rowidx && edit.cell === idx) {
+                var content = _react2.default.createElement(
+                  'form',
+                  { onSubmit: this._save },
+                  _react2.default.createElement('input', { type: 'text', defaultValue: cell })
+                );
+              }
+              return _react2.default.createElement(
+                'td',
+                { key: idx, 'data-row': rowidx },
+                content
+              );
+            }, this)
+          );
+        }, this)
+      )
+    );
+  }
+});
+
+exports.default = Excel;
+},{"react":17}],4:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -263,7 +504,7 @@ var Logo = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Logo;
-},{"react":16}],4:[function(require,module,exports){
+},{"react":17}],5:[function(require,module,exports){
 /*
 object-assign
 (c) Sindre Sorhus
@@ -355,7 +596,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 	return to;
 };
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 (function (process){(function (){
 /** @license React v17.0.1
  * react-dom.development.js
@@ -26621,7 +26862,7 @@ exports.version = ReactVersion;
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":1,"object-assign":4,"react":16,"scheduler":12,"scheduler/tracing":13}],6:[function(require,module,exports){
+},{"_process":1,"object-assign":5,"react":17,"scheduler":13,"scheduler/tracing":14}],7:[function(require,module,exports){
 /** @license React v17.0.1
  * react-dom.production.min.js
  *
@@ -26920,7 +27161,7 @@ exports.findDOMNode=function(a){if(null==a)return null;if(1===a.nodeType)return 
 exports.render=function(a,b,c){if(!rk(b))throw Error(y(200));return tk(null,a,b,!1,c)};exports.unmountComponentAtNode=function(a){if(!rk(a))throw Error(y(40));return a._reactRootContainer?(Xj(function(){tk(null,null,a,!1,function(){a._reactRootContainer=null;a[ff]=null})}),!0):!1};exports.unstable_batchedUpdates=Wj;exports.unstable_createPortal=function(a,b){return uk(a,b,2<arguments.length&&void 0!==arguments[2]?arguments[2]:null)};
 exports.unstable_renderSubtreeIntoContainer=function(a,b,c,d){if(!rk(c))throw Error(y(200));if(null==a||void 0===a._reactInternals)throw Error(y(38));return tk(a,b,c,!1,d)};exports.version="17.0.1";
 
-},{"object-assign":4,"react":16,"scheduler":12}],7:[function(require,module,exports){
+},{"object-assign":5,"react":17,"scheduler":13}],8:[function(require,module,exports){
 (function (process){(function (){
 'use strict';
 
@@ -26962,7 +27203,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"./cjs/react-dom.development.js":5,"./cjs/react-dom.production.min.js":6,"_process":1}],8:[function(require,module,exports){
+},{"./cjs/react-dom.development.js":6,"./cjs/react-dom.production.min.js":7,"_process":1}],9:[function(require,module,exports){
 (function (process){(function (){
 /** @license React v0.20.1
  * scheduler-tracing.development.js
@@ -27313,7 +27554,7 @@ exports.unstable_wrap = unstable_wrap;
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":1}],9:[function(require,module,exports){
+},{"_process":1}],10:[function(require,module,exports){
 /** @license React v0.20.1
  * scheduler-tracing.production.min.js
  *
@@ -27324,7 +27565,7 @@ exports.unstable_wrap = unstable_wrap;
  */
 'use strict';var b=0;exports.__interactionsRef=null;exports.__subscriberRef=null;exports.unstable_clear=function(a){return a()};exports.unstable_getCurrent=function(){return null};exports.unstable_getThreadID=function(){return++b};exports.unstable_subscribe=function(){};exports.unstable_trace=function(a,d,c){return c()};exports.unstable_unsubscribe=function(){};exports.unstable_wrap=function(a){return a};
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 (function (process){(function (){
 /** @license React v0.20.1
  * scheduler.development.js
@@ -28172,7 +28413,7 @@ exports.unstable_wrapCallback = unstable_wrapCallback;
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":1}],11:[function(require,module,exports){
+},{"_process":1}],12:[function(require,module,exports){
 /** @license React v0.20.1
  * scheduler.production.min.js
  *
@@ -28194,7 +28435,7 @@ exports.unstable_next=function(a){switch(P){case 1:case 2:case 3:var b=3;break;d
 exports.unstable_scheduleCallback=function(a,b,c){var d=exports.unstable_now();"object"===typeof c&&null!==c?(c=c.delay,c="number"===typeof c&&0<c?d+c:d):c=d;switch(a){case 1:var e=-1;break;case 2:e=250;break;case 5:e=1073741823;break;case 4:e=1E4;break;default:e=5E3}e=c+e;a={id:N++,callback:b,priorityLevel:a,startTime:c,expirationTime:e,sortIndex:-1};c>d?(a.sortIndex=c,H(M,a),null===J(L)&&a===J(M)&&(S?h():S=!0,g(U,c-d))):(a.sortIndex=e,H(L,a),R||Q||(R=!0,f(V)));return a};
 exports.unstable_wrapCallback=function(a){var b=P;return function(){var c=P;P=b;try{return a.apply(this,arguments)}finally{P=c}}};
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 (function (process){(function (){
 'use strict';
 
@@ -28205,7 +28446,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"./cjs/scheduler.development.js":10,"./cjs/scheduler.production.min.js":11,"_process":1}],13:[function(require,module,exports){
+},{"./cjs/scheduler.development.js":11,"./cjs/scheduler.production.min.js":12,"_process":1}],14:[function(require,module,exports){
 (function (process){(function (){
 'use strict';
 
@@ -28216,7 +28457,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"./cjs/scheduler-tracing.development.js":8,"./cjs/scheduler-tracing.production.min.js":9,"_process":1}],14:[function(require,module,exports){
+},{"./cjs/scheduler-tracing.development.js":9,"./cjs/scheduler-tracing.production.min.js":10,"_process":1}],15:[function(require,module,exports){
 (function (process){(function (){
 /** @license React v17.0.1
  * react.development.js
@@ -30553,7 +30794,7 @@ exports.version = ReactVersion;
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":1,"object-assign":4}],15:[function(require,module,exports){
+},{"_process":1,"object-assign":5}],16:[function(require,module,exports){
 /** @license React v17.0.1
  * react.production.min.js
  *
@@ -30578,7 +30819,7 @@ key:d,ref:k,props:e,_owner:h}};exports.createContext=function(a,b){void 0===b&&(
 exports.lazy=function(a){return{$$typeof:v,_payload:{_status:-1,_result:a},_init:Q}};exports.memo=function(a,b){return{$$typeof:u,type:a,compare:void 0===b?null:b}};exports.useCallback=function(a,b){return S().useCallback(a,b)};exports.useContext=function(a,b){return S().useContext(a,b)};exports.useDebugValue=function(){};exports.useEffect=function(a,b){return S().useEffect(a,b)};exports.useImperativeHandle=function(a,b,c){return S().useImperativeHandle(a,b,c)};
 exports.useLayoutEffect=function(a,b){return S().useLayoutEffect(a,b)};exports.useMemo=function(a,b){return S().useMemo(a,b)};exports.useReducer=function(a,b,c){return S().useReducer(a,b,c)};exports.useRef=function(a){return S().useRef(a)};exports.useState=function(a){return S().useState(a)};exports.version="17.0.1";
 
-},{"object-assign":4}],16:[function(require,module,exports){
+},{"object-assign":5}],17:[function(require,module,exports){
 (function (process){(function (){
 'use strict';
 
@@ -30589,4 +30830,4 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"./cjs/react.development.js":14,"./cjs/react.production.min.js":15,"_process":1}]},{},[2]);
+},{"./cjs/react.development.js":15,"./cjs/react.production.min.js":16,"_process":1}]},{},[2]);
