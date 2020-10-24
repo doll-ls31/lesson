@@ -4,13 +4,13 @@ var Excel = React.createClass({
   displayName: 'Excel',
   
   propTypes: {
-    headers: React.PropTypes.arrayOf(
-      React.PropTypes.string
-      
+    headers: PropTypes.arrayOf(
+      PropTypes.string
+    
     ),
-    initialData: React.PropTypes.arrayOf(
-      React.PropTypes.arrayOf(
-        React.PropTypes.string
+    initialData: PropTypes.arrayOf(
+      PropTypes.arrayOf(
+        PropTypes.string
       )
     ),
   },
