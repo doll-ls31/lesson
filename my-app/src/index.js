@@ -59,7 +59,6 @@ class Board extends React.Component {
 
     //交代での部分 「X」と「O」が交互に使用できるようになる
     squares[i] = this.state.xIsNext ? 'X' : 'O'; 
-
     this.setState({
       squares: squares,
       xIsNext: !this.state.xIsNext,
@@ -77,7 +76,7 @@ class Board extends React.Component {
   }
 
   render() {
-    const status = 'Next player: X';
+    const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
 
     return (
       <div>
