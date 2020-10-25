@@ -2,17 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class Square extends React.Component {
+// class Square extends React.Component {
 
   // 状態を初期化するコンストラクタ－をクラスに追加
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: null,
-    }
-  }
-  render() {
-    return (
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     value: null,
+  //   }
+  // }
+  // render() {
+  //   return (
       // <button className="square" onClick={function() { alert('click');}}>
 
       // 矢印関数構文をしようする方法
@@ -22,14 +22,26 @@ class Square extends React.Component {
 
       // クリックされたら「X」マークになるように設定を変える
       // <button className="square" onClick={() => this.setState({value: 'X'})}>
-      <button
-        className="square"
-        onClick={() => this.setState({value: 'X'})}>
-        {this.state.value}
-      </button>
-    );
-  }
-}
+  //     <button
+  //       className="square"
+  //       onClick={() => this.setState  ({value: 'X'})}>
+  //       {this.state.value}
+  //     </button>
+  //   );
+  // }
+
+  // render() {
+    function Square(props) {
+      return (
+        <button className="square" onClick={props.onClick}>
+          {props.value}
+        </button>
+      );
+    }
+  // }
+
+// }
+
 
 class Board extends React.Component {
   // ボードの初期状態を設定する
@@ -37,13 +49,21 @@ class Board extends React.Component {
     super(props);
     this.state = {
       squares: Array(9).fill(null),
+      xIsNext: true,
     };
   }
 
   handleClick(i) {
     const squares = this.state.squares.slice();
-    squares[i] = 'X';
-    this.setState({squares: squares});
+    // squares[i] = 'X';
+
+    //交代での部分 「X」と「O」が交互に使用できるようになる
+    squares[i] = this.state.xIsNext ? 'X' : 'O'; 
+
+    this.setState({
+      squares: squares,
+      xIsNext: !this.state.xIsNext,
+    });
   }
 
 
