@@ -21,7 +21,10 @@ class Square extends React.Component {
       // <button className="square" onClick={() => alert('click')}>
 
       // クリックされたら「X」マークになるように設定を変える
-      <button className="square" onClick={() => this.setState({value: 'X'})}>
+      // <button className="square" onClick={() => this.setState({value: 'X'})}>
+      <button
+        className="square"
+        onClick={() => this.setState({value: 'X'})}>
         {this.state.value}
       </button>
     );
@@ -36,6 +39,14 @@ class Board extends React.Component {
       squares: Array(9).fill(null),
     };
   }
+
+  handleClick(i) {
+    const squares = this.state.squares.slice();
+    squares[i] = 'X';
+    this.setState({squares: squares});
+  }
+
+
   renderSquare(i) {
     // return <Square value={i} />;
     return (
