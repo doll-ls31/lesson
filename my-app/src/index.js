@@ -3,18 +3,46 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 class Square extends React.Component {
+
+  // 状態を初期化するコンストラクタ－をクラスに追加
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: null,
+    }
+  }
   render() {
     return (
-      <button className="square">
-        {/* TODO */}
+      // <button className="square" onClick={function() { alert('click');}}>
+
+      // 矢印関数構文をしようする方法
+
+      // 初期設定
+      // <button className="square" onClick={() => alert('click')}>
+
+      // クリックされたら「X」マークになるように設定を変える
+      <button className="square" onClick={() => this.setState({value: 'X'})}>
+        {this.state.value}
       </button>
     );
   }
 }
 
 class Board extends React.Component {
+  // ボードの初期状態を設定する
+  constructor(props) {
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null),
+    };
+  }
   renderSquare(i) {
-    return <Square />;
+    // return <Square value={i} />;
+    return (
+      <Square value={this.state.squares[i]}
+      onClick={() => this.handleClick(i)}
+       />
+    );
   }
 
   render() {
