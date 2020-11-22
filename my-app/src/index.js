@@ -1,10 +1,15 @@
 import React from 'react';
 import ReactDOM, { render } from 'react-dom';
 import './index.css';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
 import TextField from '@material-ui/core/TextField';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 
 // class Square extends React.Component {
@@ -222,7 +227,7 @@ class Game extends React.Component {
     });
   }
   handleChange(event) {
-    this.setState({
+        this.setState({
       isChecked: !this.state.isChecked      
   })
   }
@@ -330,6 +335,17 @@ class Game extends React.Component {
         size="small"
         inputProps={{ 'aria-label': 'checkbox with small size' }}
       />
+
+      {/* Radio */}
+          <FormControl component="fieldset">
+      <FormLabel component="legend">Gender</FormLabel>
+      <RadioGroup aria-label="gender" name="gender1" >
+        <FormControlLabel value="female" control={<Radio />} label="Female" />
+        <FormControlLabel value="male" control={<Radio />} label="Male" />
+        <FormControlLabel value="other" control={<Radio />} label="Other" />
+        <FormControlLabel value="disabled" disabled control={<Radio />} label="(Disabled option)" />
+      </RadioGroup>
+    </FormControl>
     </div>
     </div>
       </div>
