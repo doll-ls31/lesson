@@ -14,6 +14,11 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Select from '@material-ui/core/Select';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Slider from '@material-ui/core/Slider';
+import VolumeDown from '@material-ui/icons/VolumeDown';
+import VolumeUp from '@material-ui/icons/VolumeUp';
 
 
 // class Square extends React.Component {
@@ -380,6 +385,27 @@ class Game extends React.Component {
           <MenuItem value={4}>Option 4</MenuItem>
         </Select>
       </FormControl>
+    </div>
+    {/* Slider */}
+    <div>
+      <Typography id="continuous-slider" gutterBottom>
+        Volume
+      </Typography>
+      <Grid container spacing={2}>
+        <Grid item>
+          <VolumeDown />
+        </Grid>
+        <Grid item xs>
+          <Slider aria-labelledby="continuous-slider" />
+        </Grid>
+        <Grid item>
+          <VolumeUp />
+        </Grid>
+      </Grid>
+      <Typography id="disabled-slider" gutterBottom>
+        Disabled slider
+      </Typography>
+      <Slider disabled defaultValue={30} aria-labelledby="disabled-slider" />
     </div>
     </div>
     </div>
