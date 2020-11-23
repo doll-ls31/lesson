@@ -19,7 +19,9 @@ import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import VolumeDown from '@material-ui/icons/VolumeDown';
 import VolumeUp from '@material-ui/icons/VolumeUp';
-
+import FormGroup from '@material-ui/core/FormGroup';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Switch from '@material-ui/core/Switch';
 
 // class Square extends React.Component {
 
@@ -407,6 +409,25 @@ class Game extends React.Component {
       </Typography>
       <Slider disabled defaultValue={30} aria-labelledby="disabled-slider" />
     </div>
+    {/* Switch */}
+    <FormControl component="fieldset">
+      <FormLabel component="legend">Assign responsibility</FormLabel>
+      <FormGroup>
+        <FormControlLabel
+          control={<Switch  name="gilad" />}
+          label="Gilad Gray"
+        />
+        <FormControlLabel
+          control={<Switch name="jason" />}
+          label="Jason Killian"
+        />
+        <FormControlLabel
+          control={<Switch name="antoine" />}
+          label="Antoine Llorca"
+        />
+      </FormGroup>
+      <FormHelperText>Be careful</FormHelperText>
+    </FormControl>
     </div>
     </div>
       </div>
